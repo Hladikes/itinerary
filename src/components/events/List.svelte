@@ -54,11 +54,11 @@
       <div class="flex items-center bg-gray-100 dark:bg-black">
         <div class="flex-1 flex">
           <TimingIndicator timing={event.timing} />
-          <span class="flex-1 ml-2 py-4 text-sm font-medium text-slate-400 dark:text-stone-600">{formatDate(event.date)}</span>
+          <span class="flex-1 ml-2 py-4 text-sm font-medium text-slate-400 dark:text-stone-400">{formatDate(event.date)}</span>
         </div>
         <TouchableOpacity 
           on:click={() => openEditor(null, event.date)}
-          classNames="px-4 py-2 text-sm font-medium rounded-full bg-blue-500 bg-opacity-10 text-blue-600 dark:bg-lime-400 dark:bg-opacity-20 dark:text-lime-400">Add</TouchableOpacity>
+          classNames="px-4 py-1 text-sm font-medium rounded-full bg-blue-500 bg-opacity-10 text-blue-600 dark:bg-lime-400 dark:bg-opacity-20 dark:text-lime-400">Add</TouchableOpacity>
       </div>
     {:else}
       <div id={event.timing === 'NOW' ? 'now' : ''} class="flex">
