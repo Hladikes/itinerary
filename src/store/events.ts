@@ -10,6 +10,7 @@ export type Event = {
   date: string
   title: string
   text: string
+  emoji: string
 }
 
 type SortedEvents = Array<
@@ -129,6 +130,7 @@ export function addEvent(event: Omit<Event, 'id'>) {
     time: event.time,
     title: event.title,
     text: event.text,
+    emoji: event.emoji,
     id: randomId(),
   }
 

@@ -35,6 +35,7 @@
       time: getCurrentTime().split(':').map((part, idx) => idx === 1 ? '00' : part).join(':'),
       text: '',
       title: '',
+      emoji: '',
       id: null,
     })
   }
@@ -59,6 +60,7 @@
         time: $selectedEvent.time,
         title: $selectedEvent.title,
         text: $selectedEvent.text,
+        emoji: $selectedEvent.emoji,
       })
     } else {
       updateEvent($selectedEvent)
@@ -72,12 +74,19 @@
     <div class="w-full lg:w-1/2 p-4 space-y-5">
       <h1 class="text-4xl mt-2 ml-2 select-none text-black dark:text-white">{title}</h1>
       <div class="flex flex-col space-y-2">
-        <input  
-          bind:this={titleInput}
-          bind:value={$selectedEvent.title}
-          class="px-3 py-2 bg-white border rounded-lg dark:border-transparent dark:bg-opacity-10 dark:text-white  focus:outline-none" 
-          type="text" 
-          placeholder="Title">
+        <div class="flex justify-start space-x-2">
+          <input  
+            bind:value={$selectedEvent.emoji}
+            style="min-width: 0!important;"
+            class="px-3 py-2 w-16 text-center bg-white border rounded-lg dark:border-transparent dark:bg-opacity-10 dark:text-white  focus:outline-none" 
+            type="text" 
+            placeholder=":D">
+          <input  
+            bind:value={$selectedEvent.title}
+            class="px-3 py-2 flex-1 bg-white border rounded-lg dark:border-transparent dark:bg-opacity-10 dark:text-white  focus:outline-none" 
+            type="text" 
+            placeholder="Title">
+        </div>
         <textarea 
           bind:value={$selectedEvent.text}
           style="min-height: 150px;"
