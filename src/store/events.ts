@@ -26,7 +26,7 @@ type SortedEvents = Array<
 
 const randomId = () => Math.random().toString(36).substring(2)
 
-function getCurrentDate() {
+export function getCurrentDate() {
   const d = new Date()
 
   const year = String(d.getFullYear())
@@ -36,7 +36,7 @@ function getCurrentDate() {
   return `${year}-${month}-${day}`
 }
 
-function getCurrentTime() {
+export function getCurrentTime() {
   const d = new Date()
 
   const hours = String(d.getHours()).padStart(2, '0')
@@ -65,9 +65,15 @@ function getTiming(date: string, time?: string): EventTiming {
   return (date < getCurrentDate() || date === getCurrentDate()) ? 'BEFORE' : 'AFTER'
 }
 
-export const events = writable<Event[]>([])
+export const events = writable<Event[]>(
+  JSON.parse(localStorage.getItem('items') || '[]')
+)
 
 export const sortedEvents = writable<SortedEvents>([])
+
+events.subscribe((currentEvents) => {
+  localStorage.setItem('items', JSON.stringify(currentEvents))
+})
 
 events.subscribe((currentEvents) => {
   const out: SortedEvents = []
@@ -108,7 +114,9 @@ events.subscribe((currentEvents) => {
   }
 
   if (!wasTimingNowSet && out.length > 0) {
-    out.at(0).timing = 'NOW'
+    if (out.at(0).timing !== 'BEFORE') {
+      out.at(0).timing = 'NOW'
+    }
   }
 
   sortedEvents.set(out)
@@ -132,17 +140,26 @@ export function addEvent(event: Omit<Event, 'id'>) {
   })
 }
 
+export function updateEvent(eventToUpdate: Event) {
+  events.update((currentEvents) => {
+    const eventIdx = currentEvents.findIndex((event) => event.id === eventToUpdate.id)
 
-const randomLoremIpsum = (maxSize = 5) => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'.split(' ').slice(0, 1 + Math.floor(Math.random() * maxSize)).sort(() => Math.random() > 0.5 ? 1 : -1).join(' ')
+    if (eventIdx !== -1) {
+      Object.assign(currentEvents[eventIdx], eventToUpdate)
+    }
 
-for (let i = 19; i < 22; i++) {
-  const date = getCurrentDate().split('-').map((part, idx) => idx === 1 ? String(Number(part) - 1).padStart(2, '0') : part).join('-')
-  addEvent({ date, time: `${String(i).padStart(2, '0')}:00`, title: randomLoremIpsum(5), text: randomLoremIpsum(30) })
+    return currentEvents
+  })
 }
-for (let i = 10; i < 22; i++) {
-  addEvent({ date: getCurrentDate(), time: `${String(i).padStart(2, '0')}:00`, title: randomLoremIpsum(5), text: randomLoremIpsum(30) })
-}
-for (let i = 10; i < 17; i++) {
-  const date = getCurrentDate().split('-').map((part, idx) => idx === 1 ? String(Number(part) + 1).padStart(2, '0') : part).join('-')
-  addEvent({ date, time: `${String(i).padStart(2, '0')}:00`, title: randomLoremIpsum(5), text: randomLoremIpsum(30) })
+
+export function deleteEvent(id: string) {
+  events.update((currentEvents) => {
+    const eventIdx = currentEvents.findIndex((event) => event.id === id)
+
+    if (eventIdx !== -1) {
+      currentEvents.splice(eventIdx, 1)
+    }
+
+    return currentEvents
+  })
 }

@@ -13,4 +13,11 @@
   })
 </script>
 
-<input class="py-1 px-2 border focus:outline-none" type="date" bind:value={date} bind:this={input}>
+<input class="py-2 px-3 border rounded-lg   dark:border-white dark:border-opacity-10 dark:bg-black dark:text-lime-400  focus:outline-none" type="date" bind:value={date} bind:this={input}>
+
+<style>
+  input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+</style>

@@ -1,0 +1,7 @@
+{
+  "name": "Itinerary",
+  "short_name": "Itinerary",
+  "lang": "en-US",
+  "start_url": "/index.html",
+  "display": "standalone"
+}
