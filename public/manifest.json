@@ -3,5 +3,17 @@
   "short_name": "Itinerary",
   "lang": "en-US",
   "start_url": "/index.html",
-  "display": "standalone"
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "logo.jpg",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
