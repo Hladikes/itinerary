@@ -71,7 +71,7 @@
 
 {#if $visible}
   <div transition:fade={{ duration: 75 }} class="fixed inset-0 bg-gray-100 dark:bg-black z-50 flex justify-center touch-none">
-    <div class="w-full lg:w-1/2 p-4 space-y-5">
+    <div class="w-full lg:w-1/2 p-4 space-y-7">
       <h1 class="text-4xl mt-2 ml-2 select-none text-black dark:text-white">{title}</h1>
       <div class="flex flex-col space-y-2">
         <div class="flex justify-start space-x-2">
@@ -102,7 +102,7 @@
       <div class="flex flex-col gap-2 sm:flex-row">
         <TouchableOpacity 
           on:click={ doPrimaryAction }
-          classNames="py-3 w-full rounded-lg font-semibold select-none text-sm uppercase bg-opacity-10 dark:bg-opacity-20 text-blue-500 bg-blue-500 dark:bg-lime-400 dark:text-lime-400">{primaryActionLabel}</TouchableOpacity>
+          classNames="py-3 w-full rounded-lg font-semibold select-none text-sm uppercase bg-opacity-10 dark:bg-opacity-20 text-indigo-500 bg-indigo-500 dark:bg-lime-400 dark:text-lime-400">{primaryActionLabel}</TouchableOpacity>
 
         {#if $primaryAction === 'update'}
           <TouchableOpacity 

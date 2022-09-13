@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { onDestroy, onMount, createEventDispatcher } from 'svelte';
-  import { handlePressStateChanges } from './pressStateManager';
+  import { onDestroy, onMount, createEventDispatcher } from 'svelte'
+  import { handlePressStateChanges } from './pressStateManager'
 
   export let classNames: string = ''
 
@@ -25,7 +25,7 @@
 <button 
   bind:this={element}
   on:click={handleClick}
-  class={ classNames + ' ' + (pressed ? 'pressed' : '') }>
+  class={classNames + ' ' + (pressed ? 'pressed' : '')}>
   <slot></slot>
 </button>
 
@@ -33,6 +33,10 @@
   button {
     transition: opacity 0.15s;
     -webkit-tap-highlight-color: transparent !important;
+  }
+
+  button, button > * {
+    user-select: none !important;
   }
 
   .pressed {
