@@ -10,19 +10,19 @@
     let classNames = ''
 
     if ($sortedEvents.at(idx - 1)?.type === 'DIVIDER') {
-      classNames += 'rounded-tl-xl rounded-tr-xl border-t '
+      classNames += 'rounded-tl-xl rounded-tr-xl '
     }
     
     if (!$sortedEvents.at(idx + 1) || $sortedEvents.at(idx + 1)?.type === 'DIVIDER') {
-      classNames += 'rounded-bl-xl rounded-br-xl border-b '
+      classNames += 'rounded-bl-xl rounded-br-xl '
     }
 
-    if ($sortedEvents.at(idx)?.type !== 'DIVIDER') {
+    if ($sortedEvents.at(idx + 1)?.type === 'EVENT') {
       classNames += 'border-b '
     }
 
     if ($sortedEvents.at(idx).timing === 'BEFORE') {
-      classNames += 'opacity-60 bg-opacity-0 '
+      classNames += 'opacity-60 '
     }
 
     return classNames
@@ -53,7 +53,7 @@
 
   {#each $sortedEvents as event, index (event.id)}
     {#if event.type === 'DIVIDER'}
-      <div id={event.timing === 'NOW' ? 'now' : ''} class="flex items-center bg-gray-100 dark:bg-black">
+      <div id={event.timing === 'NOW' ? 'now' : ''} class="flex items-center dark:bg-black">
         <div class="flex-1 flex">
           <TimingIndicator timing={event.timing} />
           <span class="flex-1 ml-2 py-4 text-sm select-none font-medium text-slate-400 dark:text-stone-400">{formatDate(event.date)}</span>
@@ -66,9 +66,9 @@
       <div id={event.timing === 'NOW' ? 'now' : ''} class="flex">
         <TimingIndicator timing={event.timing} />
         <Touchable
-          classNames="flex-1 py-2 px-4 bg-white dark:bg-black dark:bg-opacity-5 border-l border-r dark:border-stone-900 cursor-pointer {getEventStyles(index)}"
-          baseClassNames="text-slate-700 dark:text-stone-300"
-          activeClassNames="text-indigo-600 dark:text-lime-400"
+          classNames="flex-1 py-2 px-4 text-slate-700 dark:text-white cursor-pointer {getEventStyles(index)}"
+          baseClassNames="bg-white dark:bg-white/10 border-gray-200/60 dark:border-white/10"
+          activeClassNames="bg-gray-200 dark:bg-white/20 border-transparent"
           on:click={() => openEditor(event.id)}>
           <div class="flex items-center">
             {#if event.emoji}

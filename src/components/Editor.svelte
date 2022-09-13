@@ -107,8 +107,10 @@
         {#if $primaryAction === 'update'}
           <TouchableOpacity 
             on:click={() => {
-              deleteEvent($selectedEvent.id)
-              $visible = false
+              if (confirm('Are you sure you want to delete this event ?')) {
+                deleteEvent($selectedEvent.id)
+                $visible = false
+              }
             }}
             classNames="py-3 w-full rounded-lg font-semibold select-none text-sm uppercase bg-opacity-10 dark:bg-opacity-20 text-red-500 bg-red-500">Delete</TouchableOpacity>
         {/if}
