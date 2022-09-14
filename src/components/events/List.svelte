@@ -58,9 +58,11 @@
           <TimingIndicator timing={event.timing} />
           <span class="flex-1 ml-2 py-4 text-sm select-none font-medium text-slate-400 dark:text-stone-400">{formatDate(event.date)}</span>
         </div>
-        <TouchableOpacity 
-          on:click={() => openEditor(null, event.date)}
-          classNames="px-4 py-1 text-sm font-medium rounded-full bg-indigo-500 bg-opacity-10 text-indigo-600 dark:bg-lime-400 dark:bg-opacity-20 dark:text-lime-400">Add</TouchableOpacity>
+        {#if event.timing !== 'BEFORE' || event.date === getCurrentDate()}
+          <TouchableOpacity 
+            on:click={() => openEditor(null, event.date)}
+            classNames="px-4 py-1 text-sm font-medium rounded-full bg-indigo-500 bg-opacity-10 text-indigo-600 dark:bg-lime-400 dark:bg-opacity-20 dark:text-lime-400">Add</TouchableOpacity>
+        {/if}
       </div>
     {:else}
       <div id={event.timing === 'NOW' ? 'now' : ''} class="flex">
