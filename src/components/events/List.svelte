@@ -44,7 +44,7 @@
 
 <div class="flex flex-col">
   {#if $sortedEvents.length > 0}  
-    <div class="flex h-8">
+    <div class="flex h-4">
       <div class="flex w-10 justify-center">
         <div class="h-full rounded-t-full w-1 {['BEFORE', 'NOW'].includes($sortedEvents.at(0)?.timing) ? 'bg-indigo-500 dark:bg-lime-400' : 'bg-slate-200 dark:bg-stone-800'}"></div>
       </div>

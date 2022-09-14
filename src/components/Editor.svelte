@@ -70,7 +70,7 @@
 </script>
 
 {#if $visible}
-  <div transition:fade={{ duration: 75 }} class="fixed inset-0 bg-gray-100 dark:bg-black z-50 flex justify-center touch-none">
+  <div transition:fade={{ duration: 100 }} class="fixed inset-0 bg-gray-100 dark:bg-black z-50 flex justify-center touch-none">
     <div class="w-full lg:w-1/2 p-4 space-y-7">
       <h1 class="text-4xl mt-2 ml-2 select-none text-black dark:text-white">{title}</h1>
       <div class="flex flex-col space-y-2">
@@ -90,7 +90,7 @@
         <textarea 
           bind:value={$selectedEvent.text}
           style="min-height: 150px;"
-          class="px-3 py-2 bg-white border rounded-lg dark:border-transparent dark:bg-opacity-10 dark:text-white focus:outline-none" 
+          class="px-3 py-2 bg-white border rounded-lg dark:border-transparent dark:bg-opacity-10 dark:text-white  focus:outline-none" 
           type="text" 
           placeholder="Description"></textarea>
         <div class="flex space-x-2">
@@ -122,3 +122,9 @@
     </div>
   </div>
 {/if}
+
+<style>
+  input, textarea {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+</style>
