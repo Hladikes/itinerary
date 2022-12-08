@@ -100,7 +100,8 @@
       </div>
       
       <div class="flex flex-col gap-2 sm:flex-row">
-        <TouchableOpacity 
+        <TouchableOpacity
+          disabled={$selectedEvent.title.trim() === ''}
           on:click={doPrimaryAction}
           classNames="py-3 w-full rounded-lg font-semibold select-none text-sm uppercase bg-opacity-10 dark:bg-opacity-20 text-indigo-500 bg-indigo-500 dark:bg-lime-400 dark:text-lime-400">{primaryActionLabel}</TouchableOpacity>
 

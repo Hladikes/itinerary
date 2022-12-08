@@ -2,6 +2,7 @@
   import { onDestroy, onMount, createEventDispatcher } from 'svelte'
   import { handlePressStateChanges } from './pressStateManager'
 
+  export let disabled: boolean = false
   export let classNames: string = ''
 
   let element: HTMLElement = null
@@ -9,10 +10,14 @@
   let unregister = null
 
   const dispatch = createEventDispatcher()
-  const handleClick = () => dispatch('click')
+  const handleClick = () => !disabled && dispatch('click')
 
   onMount(() => {
     unregister = handlePressStateChanges(element, (state: boolean) => {
+      if (disabled) {
+        return
+      }
+
       pressed = state
     })
   })
@@ -25,7 +30,7 @@
 <button 
   bind:this={element}
   on:click={handleClick}
-  class={classNames + ' ' + (pressed ? 'pressed' : '')}>
+  class={(disabled ? 'pressed cursor-not-allowed' : '') + ' ' + classNames + ' ' + (pressed ? 'pressed' : '')}>
   <slot></slot>
 </button>
 

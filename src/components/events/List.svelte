@@ -37,7 +37,7 @@
 
   onMount(() => {
     setTimeout(() => {
-      document.getElementById('now').scrollIntoView({ behavior: 'smooth' })
+      document.getElementById('now')?.scrollIntoView({ behavior: 'smooth' })
     })
   })
 </script>
