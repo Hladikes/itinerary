@@ -54,7 +54,7 @@
   {#each $sortedEvents as event, index (event.id)}
     <TimingIndicator timing={event.timing} />
     {#if event.type === 'DIVIDER'}
-      <div id={event.timing === 'NOW' ? 'now' : ''} class="flex items-center">
+      <div use:move id={event.timing === 'NOW' ? 'now' : ''} class="flex items-center">
         <div class="flex-1 flex">
           <span class="flex-1 ml-2 py-4 text-sm select-none font-medium text-slate-400 dark:text-stone-400">{formatDate(event.date)}</span>
         </div>
