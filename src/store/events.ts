@@ -121,7 +121,7 @@ events.subscribe((currentEvents) => {
   }
 
   sortedEvents.set(out)
-  console.log(get(sortedEvents))
+  // console.log(get(sortedEvents))
 })
 
 export function addEvent(event: Omit<Event, 'id'>) {
@@ -134,7 +134,7 @@ export function addEvent(event: Omit<Event, 'id'>) {
     id: randomId(),
   }
 
-  console.log(newEvent)
+  // console.log(newEvent)
   
   events.update((currentEvents) => {
     currentEvents.push(newEvent)

@@ -5,7 +5,7 @@ export function move(block) {
     const offset = Math.abs(fullOffset - 0.5)
 
     if (offset >= 0 && offset <= 1) {
-      block.style.opacity = 1 - (offset * 2.5)
+      block.style.opacity = 1 - (offset * 2)
     }
   }
 
