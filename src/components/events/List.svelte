@@ -22,9 +22,9 @@
       classNames += 'border-b '
     }
 
-    if ($sortedEvents.at(idx).timing === 'BEFORE') {
-      classNames += 'opacity-60 '
-    }
+    // if ($sortedEvents.at(idx).timing === 'BEFORE') {
+    //   classNames += '!bg-lime-400/10 !text-lime-400 '
+    // }
 
     return classNames
   }
@@ -43,7 +43,9 @@
   })
 </script>
 
-<div style="height: 40vh;"></div>
+<div style="height: 40vh;" class="flex items-center justify-center">
+  <span class="text-5xl">🗓️</span>
+</div>
 
 <div class="grid grid-cols-[42px_auto] overflow-x-hidden">
   {#if $sortedEvents.length > 0}  
@@ -101,4 +103,6 @@
   {/if}
 </div>
 
-<div style="height: 40vh;"></div>
+<div style="height: 40vh;" class="flex items-center justify-center">
+  <span class="text-5xl">🗓️</span>
+</div>
