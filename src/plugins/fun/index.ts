@@ -3,11 +3,9 @@ export function move(block) {
     const blockRect = block.getBoundingClientRect()
     const fullOffset = (blockRect.top) / (window.innerHeight - blockRect.height)
     const offset = Math.abs(fullOffset - 0.5)
-    const spacing = Math.cos(Math.PI * offset * 2)
-    const d = 20
 
     if (offset >= 0 && offset <= 1) {
-      block.style.transform = `translateX(${-(d * spacing + d) + d + d}px)`
+      block.style.opacity = 1 - offset
     }
   }
 

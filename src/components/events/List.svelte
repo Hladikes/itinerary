@@ -43,6 +43,8 @@
   })
 </script>
 
+<div style="height: 40vh;"></div>
+
 <div class="grid grid-cols-[42px_auto] overflow-x-hidden">
   {#if $sortedEvents.length > 0}  
     <div class="flex justify-center h-3">
@@ -98,3 +100,5 @@
     <div></div>
   {/if}
 </div>
+
+<div style="height: 40vh;"></div>
