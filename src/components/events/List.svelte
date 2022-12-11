@@ -5,6 +5,7 @@
   import TimingIndicator from './TimingIndicator.svelte'
   import Touchable from '../../plugins/touchable/Touchable.svelte'
   import TouchableOpacity from '../../plugins/touchable/TouchableOpacity.svelte'
+  import { move } from '../../plugins/fun'
 
   const getEventStyles = (idx: number) => {
     let classNames = ''
@@ -42,7 +43,7 @@
   })
 </script>
 
-<div class="grid grid-cols-[42px_auto]">
+<div class="grid grid-cols-[42px_auto] overflow-x-hidden">
   {#if $sortedEvents.length > 0}  
     <div class="flex justify-center h-3">
       <div class="h-full rounded-t-full w-1 {['BEFORE', 'NOW'].includes($sortedEvents.at(0)?.timing) ? 'bg-indigo-500 dark:bg-lime-400' : 'bg-slate-200 dark:bg-stone-800'}"></div>
@@ -64,7 +65,7 @@
         {/if}
       </div>
     {:else}
-      <div id={event.timing === 'NOW' ? 'now' : ''} class="flex">
+      <div use:move id={event.timing === 'NOW' ? 'now' : ''} class="flex">
         <Touchable
           on:click={() => openEditor(event.id)}
           classNames="flex-1 py-2 px-4 text-slate-700 dark:text-white cursor-pointer {getEventStyles(index)}"
