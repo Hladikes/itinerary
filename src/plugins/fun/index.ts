@@ -26,7 +26,7 @@ export function move(block) {
 
 export function scale(block) {
   function handler() {
-    const offset = Math.abs(document.body.getBoundingClientRect().top) / 100
+    const offset = Math.abs(document.body.getBoundingClientRect().top) / 300
     const scale = 1 - offset
     block.style.transform = `scale(${scale < 0 ? 0 : scale})`
   }
