@@ -8,7 +8,7 @@
   import { sortedEvents } from './store/events'
 </script>
 
-<div class="min-h-screen flex flex-col items-center">
+<div class="min-h-screen flex flex-col items-center overflow-x-hidden">
   <div class="w-full lg:w-1/2 py-4">
     <Toolbar />
     <div class="mt-16">

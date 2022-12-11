@@ -5,7 +5,7 @@
   import TimingIndicator from './TimingIndicator.svelte'
   import Touchable from '../../plugins/touchable/Touchable.svelte'
   import TouchableOpacity from '../../plugins/touchable/TouchableOpacity.svelte'
-  import { move } from '../../plugins/fun'
+  import { scale, move } from '../../plugins/fun'
 
   const getEventStyles = (idx: number) => {
     let classNames = ''
@@ -43,12 +43,12 @@
   })
 </script>
 
-<div style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6">
-  <span class="text-5xl">👋</span>
-  <span class="text-white font-mono text-xl">Welcome</span>
+<div use:scale style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6 select-none">
+  <span class="text-6xl">👋</span>
+  <span class="text-slate-700 dark:text-white font-mono text-xl">Welcome</span>
 </div>
 
-<div class="grid grid-cols-[42px_auto] overflow-x-hidden">
+<div class="grid grid-cols-[42px_auto]">
   {#if $sortedEvents.length > 0}  
     <div class="flex justify-center h-3">
       <div class="h-full rounded-t-full w-1 {['BEFORE', 'NOW'].includes($sortedEvents.at(0)?.timing) ? 'bg-indigo-500 dark:bg-lime-400' : 'bg-slate-200 dark:bg-stone-800'}"></div>
@@ -104,7 +104,7 @@
   {/if}
 </div>
 
-<div style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6">
+<div style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6 select-none">
   <span class="text-5xl">🗓️</span>
-  <span class="text-white font-mono text-xl">That's it.</span>
+  <span class="text-slate-700 dark:text-white font-mono text-xl">That's it.</span>
 </div>
