@@ -44,7 +44,7 @@
 </script>
 
 <div style="height: 40vh;" class="flex items-center justify-center">
-  <span class="text-5xl">🗓️</span>
+  <span class="text-3xl text-white">Welcome</span>
 </div>
 
 <div class="grid grid-cols-[42px_auto] overflow-x-hidden">
@@ -103,6 +103,7 @@
   {/if}
 </div>
 
-<div style="height: 40vh;" class="flex items-center justify-center">
+<div style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6">
   <span class="text-5xl">🗓️</span>
+  <span class="text-white font-mono text-xl">That's it.</span>
 </div>
