@@ -1,14 +1,8 @@
-function calculateOffset(el: HTMLElement) {
-  const blockRect = el.getBoundingClientRect()
-  const fullOffset = (blockRect.top) / (window.innerHeight - blockRect.height)
-  const offset = Math.abs(fullOffset - 0.5)
-
-  return offset
-}
-
 export function move(block) {
   function handler() {
-    const offset = calculateOffset(block)
+    const blockRect = block.getBoundingClientRect()
+    const fullOffset = (blockRect.top) / (window.innerHeight - blockRect.height)
+    const offset = Math.abs(fullOffset - 0.5)
 
     if (offset >= 0 && offset <= 1) {
       block.style.opacity = 1 - (offset * 2.5)
@@ -24,11 +18,9 @@ export function move(block) {
   }
 }
 
-export function scale(block) {
+export function scroll(block, fn: (el: HTMLElement) => any) {
   function handler() {
-    const offset = Math.abs(document.body.getBoundingClientRect().top) / 300
-    const scale = 1 - offset
-    block.style.transform = `scale(${scale < 0 ? 0 : scale})`
+    fn(block)
   }
 
   document.addEventListener('scroll', handler)

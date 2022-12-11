@@ -5,7 +5,7 @@
   import TimingIndicator from './TimingIndicator.svelte'
   import Touchable from '../../plugins/touchable/Touchable.svelte'
   import TouchableOpacity from '../../plugins/touchable/TouchableOpacity.svelte'
-  import { scale, move } from '../../plugins/fun'
+  import { scroll, move } from '../../plugins/fun'
 
   const getEventStyles = (idx: number) => {
     let classNames = ''
@@ -43,10 +43,16 @@
   })
 </script>
 
-<div style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6 select-none relative">
-  <span use:scale class="text-6xl">👋</span>
-  <span use:scale class="text-slate-700 dark:text-white font-mono text-xl">Welcome</span>
-  <span class="text-indigo-600 dark:text-lime-400 font-mono -rotate-90 absolute bottom-5 left-8 origin-bottom-left">Your journey starts here</span>
+<div 
+  use:scroll={(el) => {
+    const offset = Math.abs(document.body.getBoundingClientRect().top) / 300
+    const scale = 1 - offset
+    el.style.transform = `scale(${scale < 0 ? 0 : scale})`
+  }} 
+  style="height: 40vh;" 
+  class="flex items-center justify-center flex-col space-y-7 select-none relative">
+  <span class="text-7xl">👋</span>
+  <span class="text-slate-700 dark:text-white font-mono text-2xl">Welcome</span>
 </div>
 
 <div class="grid grid-cols-[42px_auto]">
@@ -105,7 +111,14 @@
   {/if}
 </div>
 
-<div style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6 select-none">
-  <span class="text-5xl">🗓️</span>
-  <span class="text-slate-700 dark:text-white font-mono text-xl">That's it.</span>
+<div 
+  use:scroll={(el) => {
+    const offset = Math.abs(window.innerHeight - document.body.getBoundingClientRect().bottom) / 300
+    const scale = 1 - offset
+    el.style.transform = `scale(${scale < 0 ? 0 : scale})`
+  }} 
+  style="height: 40vh;" 
+  class="flex items-center justify-center flex-col space-y-6 select-none">
+  <span class="text-7xl">🗓️</span>
+  <span class="text-slate-700 dark:text-white font-mono text-2xl">That's it.</span>
 </div>
