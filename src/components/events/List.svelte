@@ -43,9 +43,10 @@
   })
 </script>
 
-<div use:scale style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6 select-none">
-  <span class="text-6xl">👋</span>
-  <span class="text-slate-700 dark:text-white font-mono text-xl">Welcome</span>
+<div style="height: 40vh;" class="flex items-center justify-center flex-col space-y-6 select-none relative">
+  <span use:scale class="text-6xl">👋</span>
+  <span use:scale class="text-slate-700 dark:text-white font-mono text-xl">Welcome</span>
+  <span class="text-indigo-600 dark:text-lime-400 font-mono -rotate-90 absolute bottom-5 left-8 origin-bottom-left">Your journey starts here</span>
 </div>
 
 <div class="grid grid-cols-[42px_auto]">
