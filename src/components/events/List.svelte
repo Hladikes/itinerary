@@ -5,7 +5,6 @@
   import TimingIndicator from './TimingIndicator.svelte'
   import Touchable from '../../plugins/touchable/Touchable.svelte'
   import TouchableOpacity from '../../plugins/touchable/TouchableOpacity.svelte'
-  import { scroll, move } from '../../plugins/fun'
 
   const getEventStyles = (idx: number) => {
     let classNames = ''
@@ -22,9 +21,9 @@
       classNames += 'border-b '
     }
 
-    // if ($sortedEvents.at(idx).timing === 'BEFORE') {
-    //   classNames += '!bg-lime-400/10 !text-lime-400 '
-    // }
+    if ($sortedEvents.at(idx).timing === 'BEFORE') {
+      classNames += 'opacity-60 '
+    }
 
     return classNames
   }
@@ -43,19 +42,7 @@
   })
 </script>
 
-<!-- <div 
-  use:scroll={(el) => {
-    const offset = Math.abs(document.body.getBoundingClientRect().top) / 300
-    const scale = 1 - offset
-    el.style.transform = `scale(${scale < 0 ? 0 : scale})`
-  }} 
-  style="height: 40vh;" 
-  class="flex items-center justify-center flex-col space-y-7 select-none relative">
-  <span class="text-7xl">👋</span>
-  <span class="text-slate-700 dark:text-white font-mono text-2xl">Welcome</span>
-</div> -->
-
-<div class="grid grid-cols-[42px_auto]">
+<div class="grid grid-cols-[42px_auto] pb-10">
   {#if $sortedEvents.length > 0}  
     <div class="flex justify-center h-3">
       <div class="h-full rounded-t-full w-1 {['BEFORE', 'NOW'].includes($sortedEvents.at(0)?.timing) ? 'bg-indigo-500 dark:bg-lime-400' : 'bg-slate-200 dark:bg-stone-800'}"></div>
@@ -81,7 +68,7 @@
         <Touchable
           on:click={() => openEditor(event.id)}
           classNames="flex-1 py-2 px-4 text-slate-700 dark:text-white cursor-pointer {getEventStyles(index)}"
-          baseClassNames="bg-white dark:bg-white/10 border-gray-200/60 dark:border-white/10"
+          baseClassNames="bg-white dark:bg-white/10 border-black/10 dark:border-white/10"
           activeClassNames="bg-gray-300/70 dark:bg-white/20 border-transparent">
           <div class="flex items-center">
             {#if event.emoji}
@@ -104,21 +91,9 @@
   {/each}
 
   {#if $sortedEvents.length > 0}  
-    <div class="flex justify-center h-5">
+    <div class="flex justify-center h-10">
       <div class="h-full rounded-b-full w-1 {$sortedEvents.at(-1)?.timing === 'BEFORE' ? 'bg-indigo-500 dark:bg-lime-400' : 'bg-gray-300 dark:bg-stone-800'}"></div>
     </div>
     <div></div>
   {/if}
 </div>
-
-<!-- <div 
-  use:scroll={(el) => {
-    const offset = Math.abs(window.innerHeight - document.body.getBoundingClientRect().bottom) / 300
-    const scale = 1 - offset
-    el.style.transform = `scale(${scale < 0 ? 0 : scale})`
-  }} 
-  style="height: 40vh;" 
-  class="flex items-center justify-center flex-col space-y-6 select-none">
-  <span class="text-7xl">🗓️</span>
-  <span class="text-slate-700 dark:text-white font-mono text-2xl">That's it.</span>
-</div> -->
