@@ -43,7 +43,7 @@
   })
 </script>
 
-<div 
+<!-- <div 
   use:scroll={(el) => {
     const offset = Math.abs(document.body.getBoundingClientRect().top) / 300
     const scale = 1 - offset
@@ -53,7 +53,7 @@
   class="flex items-center justify-center flex-col space-y-7 select-none relative">
   <span class="text-7xl">👋</span>
   <span class="text-slate-700 dark:text-white font-mono text-2xl">Welcome</span>
-</div>
+</div> -->
 
 <div class="grid grid-cols-[42px_auto]">
   {#if $sortedEvents.length > 0}  
@@ -66,7 +66,7 @@
   {#each $sortedEvents as event, index (event.id)}
     <TimingIndicator timing={event.timing} />
     {#if event.type === 'DIVIDER'}
-      <div use:move id={event.timing === 'NOW' ? 'now' : ''} class="flex items-center">
+      <div id={event.timing === 'NOW' ? 'now' : ''} class="flex items-center">
         <div class="flex-1 flex">
           <span class="flex-1 ml-2 py-4 text-sm select-none font-medium text-slate-400 dark:text-stone-400">{formatDate(event.date)}</span>
         </div>
@@ -77,7 +77,7 @@
         {/if}
       </div>
     {:else}
-      <div use:move id={event.timing === 'NOW' ? 'now' : ''} class="flex">
+      <div id={event.timing === 'NOW' ? 'now' : ''} class="flex">
         <Touchable
           on:click={() => openEditor(event.id)}
           classNames="flex-1 py-2 px-4 text-slate-700 dark:text-white cursor-pointer {getEventStyles(index)}"
@@ -111,7 +111,7 @@
   {/if}
 </div>
 
-<div 
+<!-- <div 
   use:scroll={(el) => {
     const offset = Math.abs(window.innerHeight - document.body.getBoundingClientRect().bottom) / 300
     const scale = 1 - offset
@@ -121,4 +121,4 @@
   class="flex items-center justify-center flex-col space-y-6 select-none">
   <span class="text-7xl">🗓️</span>
   <span class="text-slate-700 dark:text-white font-mono text-2xl">That's it.</span>
-</div>
+</div> -->
