@@ -70,7 +70,7 @@
 </script>
 
 {#if $visible}
-  <div transition:fade={{ duration: 75 }} class="fixed inset-0 bg-gray-100 dark:bg-black z-50 flex justify-center touch-none">
+  <div transition:fade={{ duration: 75 }} class="fixed inset-0 bg-gray-100 dark:bg-zinc-900 z-50 flex justify-center touch-none">
     <div class="w-full lg:w-1/2 p-4 space-y-7">
       <h1 class="text-4xl mt-2 ml-2 select-none text-black dark:text-white">{title}</h1>
       <div class="flex flex-col space-y-2">

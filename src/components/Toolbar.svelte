@@ -4,7 +4,7 @@
   import { getCurrentDate } from '../store/events'
 </script>
 
-<div class="fixed top-0 left-0 right-0 h-16 flex px-4 items-center justify-between bg-gray-200 dark:bg-black z-50 border-b border-gray-300/60 dark:border-white/10">
+<div class="fixed top-0 left-0 right-0 h-16 flex px-4 items-center justify-between bg-gray-200 dark:bg-zinc-900 z-50 border-b border-gray-300/60 dark:border-white/10">
   <h1 class="text-slate-700 dark:text-white text-lg font-mono">Itinerary</h1>
   <TouchableOpacity 
     on:click={() => openEditor(null, getCurrentDate())}
